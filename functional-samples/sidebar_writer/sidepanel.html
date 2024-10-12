@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 1vw;
+        font-size: 1vw; /* Base font size relative to viewport width */
+      }
+      h1 {
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+        font-size: 1.4em; /* Font size relative to viewport width */
+        font-family: 'Roboto', sans-serif;
+      }
+      .form-group {
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 1.5vw; /* Margin relative to viewport width */
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5vw; /* Margin relative to viewport width */
+        font-weight: bold;
+        font-size: 3.5em; /* Keep relative to body font size */
+        font-family: 'Roboto', sans-serif;
+      }
+      textarea {
+        width: 100%;
+        padding: 0.7vw; /* Padding relative to viewport width */
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical; /* Allow vertical resizing */
+        font-size: 3.5em; /* Keep relative to body font size */
+        font-family: 'Roboto', sans-serif;
+      }
+      textarea::placeholder {
+        color: #888; /* Optional: Change the color of the placeholder text */
+        font-family: 'Roboto', sans-serif;
+      }
+      button {
+        padding: 1vw 2vw; /* Padding relative to viewport width */
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 3.5em; /* Keep relative to body font size */
+        font-family: 'Roboto', sans-serif;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>    
+    <div class="form-group">
+      <label for="input1">Please enter the text to be polished: ✨</label>
+      <textarea id="input1" name="input1" placeholder="ie. I'm Hailey, an aspiring software engineer looking for a job ..." rows="9"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="input2">(Optional) Specify the purpose: 💡</label>
+      <textarea id="input2" name="input2" placeholder="ie. cover letter" rows="2"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="output">Your improved text will appear here: 🎉</label>
+      <textarea id="output" name="output" rows="1"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <button type="submit">Rewrite</button>
+    </div>
+    <script src="sidepanel.js" type="module"></script>
+  </body>
+</html>
