@@ -81,14 +81,19 @@ async function fetchBackendData(article) {
                 const summary = document.createElement("pre");
 
                 // Use the same styling as the publish information in an article's header
-                summary.classList.add("text-black", "type--caption");
+                summary.classList.add("text-black", "type--caption", "summary-text");
                 summary.style.fontSize = "16px";
                 summary.style.fontStyle = "italic";
                 summary.style.whiteSpace = "pre-wrap"; // Ensure text wraps like in a <p> tag
                 summary.style.wordWrap = "break-word"; // Ensure long words break to the next line
                 summary.style.width = "100%"; // Ensure it takes the full width
                 summary.innerHTML = backendData.response.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>'); // Use innerHTML instead of textContent
-                summary.classList.add("summary-text");
+                summary.style.outline = "none";
+                summary.style.border = "none";
+                summary.style.background = "transparent";
+                summary.style.padding = "0";
+                summary.style.margin = "0";
+                summary.style.marginTop = "0"; // Ensure no top margin
 
                 // Get the color of the heading and apply it to the summary text and badge
                 const headingColor = window.getComputedStyle(heading, null).getPropertyValue('color');
@@ -99,6 +104,7 @@ async function fetchBackendData(article) {
                 badge.classList.add("text-black", "type--caption");
                 badge.textContent = `⏱️ ${readingTime} min read`;
                 badge.style.color = headingColor;
+                badge.style.marginBottom = "0px"; // Add a small margin below the badge
 
                 // Create the copy button with an emoji
                 const copyButton = document.createElement("button");
@@ -108,7 +114,7 @@ async function fetchBackendData(article) {
                 copyButton.style.outline = "none"; // Remove the default focus style
                 copyButton.style.border = "none"; // Remove the default button border
                 copyButton.style.padding = "0px"; // Smaller button area
-                copyButton.style.marginRight = "30px"; // Add some space to the right
+                copyButton.style.marginRight = "40px"; // Add some space to the right
 
                 copyButton.addEventListener("click", async () => {
                     await navigator.clipboard.writeText(summary.textContent);
@@ -117,12 +123,14 @@ async function fetchBackendData(article) {
 
                 // Create a container for the summary, badge, and copy button
                 const summaryCopyContainer = document.createElement("div");
-                summaryCopyContainer.classList.add("summary-copy-container");
                 summaryCopyContainer.style.display = "flex";
                 summaryCopyContainer.style.flexDirection = "column";
                 summaryCopyContainer.style.alignItems = "flex-start"; // Align items vertically
                 summaryCopyContainer.style.width = "100%";
                 summaryCopyContainer.style.marginTop = "0px"; // Ensure no space between badge and summaryCopyContainer
+                summaryCopyContainer.style.border = "none";
+                summaryCopyContainer.style.outline = "none";
+                summaryCopyContainer.style.background = "transparent";
                 summaryCopyContainer.appendChild(badge);
                 summaryCopyContainer.appendChild(copyButton);
                 summaryCopyContainer.appendChild(summary);
@@ -138,27 +146,30 @@ async function fetchBackendData(article) {
                 const style = document.createElement('style');
                 style.textContent = `
                     .summary-text {
-                        display: inline; /* Ensure the summary text is inline */
-                        color: inherit; /* Inherit color from parent */
-                        width: 100%; /* Ensure it takes the full width */
+                        display: inline;
+                        color: inherit;
+                        width: 100%;
+                        outline: none;
+                        border: none;
+                        background: transparent;
+                        padding: 0;
+                        margin: 0;
+                        margin-top: 0;
                     }
                     .copy-button {
                         visibility: hidden;
                         background-color: transparent;
                         transition: background-color 0.3s ease;
-                        white-space: nowrap; /* Ensure the button wraps the text content */
-                        align-self: flex-end; /* Align to the right */
+                        white-space: nowrap;
+                        align-self: flex-end;
+                        margin-top: 0px; // Add some space above the copy button
+                        margin-bottom: 2px;
                     }
                     .container:hover .copy-button {
                         visibility: visible;
                     }
                     .copy-button.copied {
                         background-color: #d3d3d3; /* Lighter grey color */
-                    }
-                    .summary-copy-container {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start; /* Align summary text to the left */
                     }
                 `;
                 document.head.appendChild(style);

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Article Summarizer - Gemini",
-    "version": "1.22",
+    "version": "1.23",
     "description": "Writes a brief summary under the article title. This helps readers quickly gauge relevance and decide whether to continue reading.",    
     "icons": {
     "16": "images/icon-16.png",
